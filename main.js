@@ -64,29 +64,29 @@ const playRound = (computerSelection, playerSelection) => {
 
 const game = () =>{
     const name = prompt("What's your name?")
-    let pscore = 0;
-    let cscore = 0;
+    let playerScore = 0;
+    let computerScore = 0;
     for(let i = 1; i <= 5; i++){
         const result = playRound(playerSelection(), computerSelection())
         if (result == 0){
-            cscore++;
+            computerScore++;
         }
         if(result == 1){
-            pscore++;
+            playerScore++;
         } else{
-            cscore++;
-            pscore++;
+            computerScore++;
+            playerScore++;
         }
     }
-    if(pscore > cscore){
-        alert(`The score is ${pscore} to ${cscore}! ${name} has won!`)
+    if(playerScore > computerScore){
+        alert(`The score is ${playerScore} to ${computerScore}! ${name} has won!`)
     }
-    if(cscore > pscore){
-        alert(`The score is ${cscore} to ${pscore}! ${name} has lost!`)
+    if(computerScore > playerScore){
+        alert(`The score is ${computerScore} to ${playerScore}! ${name} has lost!`)
     }
-    if(cscore == pscore)
+    if(computerScore == playerScore)
     {
-        alert(`The score is ${cscore} to ${pscore}! It's a tie!`)
+        alert(`The score is ${computerScore} to ${playerScore}! It's a tie!`)
     }
 }
 
