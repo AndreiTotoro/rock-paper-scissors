@@ -1,6 +1,10 @@
 const body = document.querySelector('body');
 const buttons = document.querySelectorAll('.button');
 const result = document.querySelector('#result');
+const points = document.querySelector('#points');
+
+let pscore = 0;
+let cscore = 0;
 
 const computerSelection = () => {
 	const choice = Math.floor(Math.random() * 3);
@@ -15,11 +19,27 @@ const computerSelection = () => {
 	}
 };
 
+const scoreChecker = () => {
+	points.innerHTML = `Player: ${pscore} Computer: ${cscore}`;
+	if (pscore == 5) {
+		result.innerHTML = 'Player has 5 points. Player won!';
+		points.innerHTML = 'Player: 0 Computer: 0';
+		pscore = 0;
+		cscore = 0;
+	}
+	if (cscore == 5) {
+		result.innerHTML = 'Computer has 5 points. Computer won!';
+		points.innerHTML = 'Player: 0 Computer: 0';
+		pscore = 0;
+		cscore = 0;
+	}
+};
+
 const playerSelection = () => {
 	let choice = prompt('Rock, Paper, Scissors?').toLowerCase();
 	while (choice != 'rock' && choice != 'paper' && choice != 'scissors') {
 		choice = prompt(
-			'Invalid Option! Please choose between: Rock, Paper and Scissors.'
+			`Invalid Option! Please choose between: Rock, Paper and Scissors.`
 		);
 	}
 	return choice;
@@ -28,41 +48,47 @@ const playerSelection = () => {
 const playRound = (computerSelection, playerSelection) => {
 	if (playerSelection == 'rock' && computerSelection == 'rock') {
 		result.innerHTML = "Computer played rock. It's a tie!";
-		return 2;
+		scoreChecker();
 	}
 	if (playerSelection == 'rock' && computerSelection == 'paper') {
 		result.innerHTML = 'Computer played paper. You lost!';
-		return 0;
+		cscore++;
+		scoreChecker();
 	}
 	if (playerSelection == 'rock' && computerSelection == 'scissors') {
 		result.innerHTML = 'Computer played scissors. You won!';
-		return 1;
+		pscore++;
+		scoreChecker();
 	}
 
 	if (playerSelection == 'paper' && computerSelection == 'rock') {
 		result.innerHTML = 'Computer played rock. You won!';
-		return 1;
+		pscore++;
+		scoreChecker();
 	}
 	if (playerSelection == 'paper' && computerSelection == 'paper') {
 		result.innerHTML = "Computer played paper. It's a tie!";
-		return 2;
+		scoreChecker();
 	}
 	if (playerSelection == 'paper' && computerSelection == 'scissors') {
 		result.innerHTML = 'Computer played scissors. You lost!';
-		return 0;
+		cscore++;
+		scoreChecker();
 	}
 
 	if (playerSelection == 'scissors' && computerSelection == 'rock') {
 		result.innerHTML = 'Computer played rock. You lost!';
-		return 0;
+		cscore++;
+		scoreChecker();
 	}
 	if (playerSelection == 'scissors' && computerSelection == 'paper') {
 		result.innerHTML = 'Computer played paper. You won!';
-		return 1;
+		pscore++;
+		scoreChecker();
 	}
 	if (playerSelection == 'scissors' && computerSelection == 'scissors') {
 		result.innerHTML = "Computer played scissors. It's a tie!";
-		return 2;
+		scoreChecker();
 	}
 };
 
