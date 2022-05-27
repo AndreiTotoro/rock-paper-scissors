@@ -1,5 +1,6 @@
 const body = document.querySelector('body');
 const buttons = document.querySelectorAll('.button');
+const result = document.querySelector('#result');
 
 const computerSelection = () => {
 	const choice = Math.floor(Math.random() * 3);
@@ -26,41 +27,41 @@ const playerSelection = () => {
 
 const playRound = (computerSelection, playerSelection) => {
 	if (playerSelection == 'rock' && computerSelection == 'rock') {
-		alert("Computer played rock. It's a tie!");
+		result.innerHTML = "Computer played rock. It's a tie!";
 		return 2;
 	}
 	if (playerSelection == 'rock' && computerSelection == 'paper') {
-		alert('Computer played paper. You lost!');
+		result.innerHTML = 'Computer played paper. You lost!';
 		return 0;
 	}
 	if (playerSelection == 'rock' && computerSelection == 'scissors') {
-		alert('Computer played scissors. You won!');
+		result.innerHTML = 'Computer played scissors. You won!';
 		return 1;
 	}
 
 	if (playerSelection == 'paper' && computerSelection == 'rock') {
-		alert('Computer played rock. You won!');
+		result.innerHTML = 'Computer played rock. You won!';
 		return 1;
 	}
 	if (playerSelection == 'paper' && computerSelection == 'paper') {
-		alert("Computer played paper. It's a tie!");
+		result.innerHTML = "Computer played paper. It's a tie!";
 		return 2;
 	}
 	if (playerSelection == 'paper' && computerSelection == 'scissors') {
-		alert('Computer played scissors. You lost!');
+		result.innerHTML = 'Computer played scissors. You lost!';
 		return 0;
 	}
 
 	if (playerSelection == 'scissors' && computerSelection == 'rock') {
-		alert('Computer played rock. You lost!');
+		result.innerHTML = 'Computer played rock. You lost!';
 		return 0;
 	}
 	if (playerSelection == 'scissors' && computerSelection == 'paper') {
-		alert('Computer played paper. You won!');
+		result.innerHTML = 'Computer played paper. You won!';
 		return 1;
 	}
 	if (playerSelection == 'scissors' && computerSelection == 'scissors') {
-		alert("Computer played scissors. It's a tie!");
+		result.innerHTML = "Computer played scissors. It's a tie!";
 		return 2;
 	}
 };
@@ -88,14 +89,14 @@ buttons.forEach((button) => {
         }
     }
     if(playerScore > computerScore){
-        alert(`The score is ${playerScore} to ${computerScore}! ${name} has won!`)
+        result.innerHTML = `The score is ${playerScore} to ${computerScore}! ${name} has won!`)
     }
     if(computerScore > playerScore){
-        alert(`The score is ${computerScore} to ${playerScore}! ${name} has lost!`)
+        result.innerHTML = `The score is ${computerScore} to ${playerScore}! ${name} has lost!`)
     }
     if(computerScore == playerScore)
     {
-        alert(`The score is ${computerScore} to ${playerScore}! It's a tie!`)
+        result.innerHTML = `The score is ${computerScore} to ${playerScore}! It's a tie!`)
     }
 }
 
